@@ -11,3 +11,4 @@ wheels/
 .garth
 .env
 test_mcp.py
+.garth
