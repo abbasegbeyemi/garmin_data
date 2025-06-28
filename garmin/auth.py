@@ -5,10 +5,8 @@ from garth.exc import GarthException
 
 
 class AuthClient:
-    def __init__(self, token_dir=".garth", email=None, password=None):
+    def __init__(self, token_dir=".garth"):
         self.token_dir = token_dir
-        self.email = email
-        self.password = password
 
     def is_logged_in(self) -> bool:
         garth.resume(self.token_dir)

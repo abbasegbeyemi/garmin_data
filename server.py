@@ -10,8 +10,6 @@ from garmin import APIClient, AuthClient
 
 load_dotenv()
 
-GARMIN_USERNAME = os.getenv("GARMIN_USERNAME")
-GARMIN_PASSWORD = os.getenv("GARMIN_PASSWORD")
 
 _garmin_auth_client: AuthClient | None = None
 _garmin_api_client: APIClient | None = None
@@ -48,10 +46,7 @@ async def initialise_garmin_client():
     """Initialise the Garmin client"""
     global _garmin_auth_client, _garmin_api_client
 
-    _garmin_auth_client = AuthClient(
-        email=GARMIN_USERNAME,
-        password=GARMIN_PASSWORD,
-    )
+    _garmin_auth_client = AuthClient()
 
     if not _garmin_auth_client.is_logged_in():
         raise Exception("Garmin client not logged in. Perform a manual log in.")
@@ -66,7 +61,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    if not GARMIN_USERNAME or not GARMIN_PASSWORD:
-        raise Exception("GARMIN_USERNAME and GARMIN_PASSWORD must be set")
-
     asyncio.run(main())
