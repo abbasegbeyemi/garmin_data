@@ -1,6 +1,7 @@
 import asyncio
 import os
 from concurrent.futures import ThreadPoolExecutor
+from datetime import date
 from typing import Any, Callable
 
 from dotenv import load_dotenv
@@ -25,14 +26,15 @@ async def run_blocking_call(func: Callable, *args, **kwargs) -> Any:
 
 
 @mcp.tool()
-async def get_sleep_data(days: int = 7) -> list[dict]:
+async def get_sleep_data(date_start: date, lookback_days: int = 7) -> list[dict]:
     """Get sleep data for the last n days"""
     if _garmin_api_client is None:
         raise Exception("Garmin API client not initialized. Server not logged in.")
 
     sleep_data = await run_blocking_call(
         _garmin_api_client.get_sleep_data,
-        days=days,
+        date_start=date_start,
+        lookback_days=lookback_days,
     )
     return sleep_data
 
@@ -57,7 +59,10 @@ async def initialise_garmin_client():
 async def main():
     """Main function to run the server"""
     await initialise_garmin_client()
-    await mcp.run_async("sse", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
+    if os.getenv("ENVIRONMENT") == "development":
+        await mcp.run_async()
+    else:
+        await mcp.run_async("http", host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
 
 
 if __name__ == "__main__":
