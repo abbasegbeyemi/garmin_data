@@ -216,7 +216,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "fastmcp" },
-    { name = "garth" },
+    { name = "garminconnect" },
     { name = "openai" },
     { name = "python-dotenv" },
 ]
@@ -224,9 +224,21 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "fastmcp", specifier = ">=2.9.2" },
-    { name = "garth", specifier = ">=0.5.17" },
+    { name = "garminconnect", specifier = ">=0.2.28" },
     { name = "openai", specifier = ">=1.92.3" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
+]
+
+[[package]]
+name = "garminconnect"
+version = "0.2.28"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "garth" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/06/1f/d5aee4c4ff0dac960938f912f5c422c818bf55402b9b12264f2de8c5948d/garminconnect-0.2.28.tar.gz", hash = "sha256:51852b8035dad8ef76c906e7bf4c64a8dc7530c745e5fa3bf0c1e85e67313bb8", size = 148205, upload-time = "2025-06-09T17:39:55.422Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/95/f8/8e21a6d1e4e51ae6aae1ef0a65e0ae1ed6bfa114331ae1196376d37f6506/garminconnect-0.2.28-py3-none-any.whl", hash = "sha256:c3206f1c5d256b36d0498788b96275f344312968b5c415d48b6b7c7b7f68a5cd", size = 84413, upload-time = "2025-06-09T17:39:47.637Z" },
 ]
 
 [[package]]

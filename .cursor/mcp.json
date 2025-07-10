@@ -1,0 +1,17 @@
+{
+    "mcpServers": {
+        "garmin": {
+            "command": "./mcp.start.sh",
+            "env": {
+                "ENVIRONMENT": "development"
+            }
+        },
+        "time": {
+            "command": "uvx",
+            "args": [
+                "mcp-server-time",
+                "--local-timezone=Europe/London"
+            ]
+        }
+    }
+}

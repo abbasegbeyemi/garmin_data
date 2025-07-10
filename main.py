@@ -8,8 +8,8 @@ from openai.types.chat import ChatCompletionMessageParam
 config = {
     "mcpServers": {
         "garmin": {
-            "command": "uv",
-            "args": ["run", "server.py"],
+            "command": "./mcp.start.sh",
+            "env": {"ENVIRONMENT": "development"},
         },
         "time": {
             "command": "uvx",

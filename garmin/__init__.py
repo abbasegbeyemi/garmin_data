@@ -1,4 +1,3 @@
-from .auth import AuthClient
-from .client import APIClient
+from .client import GarminClient
 
-__all__ = ["APIClient", "AuthClient"]
+__all__ = ["GarminClient"]
